@@ -1,9 +1,11 @@
 import React from 'react';
 import Modal from '../UI/Modal';
 
-type CartProps = {};
+type CartProps = {
+  onClose: () => void;
+};
 
-function Cart() {
+function Cart({ onClose }: CartProps) {
   const cartItems = (
     <ul>
       {[{ id: 'c1', name: 'AAA', amount: 3, price: 2300 }].map((x) => (
@@ -11,6 +13,7 @@ function Cart() {
       ))}
     </ul>
   );
+
   return (
     <Modal>
       {cartItems}
@@ -21,6 +24,7 @@ function Cart() {
       <div className="text-right">
         <button
           type="button"
+          onClick={() => onClose()}
           className="ml-4 cursor-pointer rounded-[25px] border border-[#8a2b06] bg-transparent py-2 px-8 text-[#8a2b06] hover:border-[#5a1a01] hover:bg-[#5a1a01] hover:text-white active:border-[#5a1a01] active:bg-[#5a1a01] active:text-white"
         >
           Close
