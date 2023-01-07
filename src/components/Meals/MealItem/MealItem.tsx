@@ -1,5 +1,6 @@
 import React from 'react';
 import { Meal } from '../../../models/Meal';
+import MealItemForm from './MealItemForm';
 
 type MealItemProps = {
   meal: Meal;
@@ -13,7 +14,9 @@ function MealItem({ meal: { id, name, description, price } }: MealItemProps) {
         <div className="italic">{description}</div>
         <div className="mt-1 text-xl font-bold text-[#ad5502]">{`$${price}`}</div>
       </div>
-      <div>s</div>
+      <div>
+        <MealItemForm id={id} />
+      </div>
     </li>
   );
 }
