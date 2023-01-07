@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Product } from '../models/Product';
+import { useAxiosGet } from './useAxios';
 
 const products: Product[] = [
   {
@@ -135,28 +136,9 @@ const products: Product[] = [
 ];
 
 function useProducts() {
-  // const [data, setData] = useState<Product[]>([]);
-  // const [loading, setLoading] = useState(false);
-  // const [error, setError] = useState<unknown>();
-  // const sendRequest = useCallback(() => {
-  //   setLoading(true);
-  //   setError('');
-  //   try {
-  //     setData(products);
-  //   } catch (err: unknown) {
-  //     setError(err);
-  //   }
-  // }, []);
-  // return { products: data, loading, error, sendRequest };
+  const { loading, products: data, error, sendRequest } = useAxiosGet<Product>('products', false);
 
-  const [data, setData] = useState<Product[]>([]);
-
-  useEffect(() => {
-    setData(products);
-    return () => {};
-  }, []);
-
-  return { products: data };
+  return { products };
 }
 
 export default useProducts;
