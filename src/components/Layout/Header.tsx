@@ -11,7 +11,7 @@ function Header() {
       </header>
       <div className="z-0 h-[25rem] w-full overflow-hidden">
         <img
-          className="h-full w-[110%] -translate-x-4 -translate-y-6 -rotate-6 scale-110 object-cover"
+          className="h-full w-[110%] -translate-x-4 -translate-y-1/3 -rotate-6 scale-110 object-cover"
           src={mealsImage}
           alt="laptop on the table"
           srcSet=""
