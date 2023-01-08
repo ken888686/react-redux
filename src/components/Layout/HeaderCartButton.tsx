@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import CartContext from '../../store/cart-context';
 import CartIcon from '../Cart/CartIcon';
 
 type HeaderCartButtonProps = {
@@ -6,6 +7,12 @@ type HeaderCartButtonProps = {
 };
 
 function HeaderCartButton({ onClick }: HeaderCartButtonProps) {
+  const cartCtx = useContext(CartContext);
+  const numberOfCartItems = cartCtx.items.reduce(
+    (prev, curr, index, item) => curr + item.amount,
+    0,
+  );
+
   return (
     <button
       type="button"
@@ -17,7 +24,7 @@ function HeaderCartButton({ onClick }: HeaderCartButtonProps) {
       </span>
       <span>Your Cart</span>
       <span className="ml-4 rounded-3xl bg-[#b94517] py-1 px-4 font-bold group-hover:bg-[#92320c] group-active:bg-[#92320c]">
-        3
+        {numberOfCartItems}
       </span>
     </button>
   );
